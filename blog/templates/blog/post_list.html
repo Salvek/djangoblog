@@ -11,18 +11,20 @@
         <h3>Autor: Sławomir Śpiewak</h3>
         <h4>Wszelkie prawa zastrzeżone</h4>
     </div>
+
+    {% comment "Komentarz autora" %}
+    Tutaj lista postów
+    {% endcomment %}
+
+    {% for post in posts %}
     <div>
-        <p>To jest Akapit</p>
-        <em>To jest wyróżniony tekst</em><br>
-        <strong>To jest POGRUBIONY tekst</strong><br>
-        <a href="https://youtube.com">L I N K</a>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>Opublikowany: {{ post.publishDate }}</p>
+        <em>{{ post.text|linebreaksbr }}</em>
     </div>
+    {% endfor %}
     <div>
-        <ul>
-            <li>Element listy</li>
-            <li>Element listy</li>
-            <li>Element listy</li>
-        </ul>
+
     </div>
 </body>
 </html>
