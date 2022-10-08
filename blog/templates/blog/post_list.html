@@ -1,30 +1,13 @@
-<!DOCTYPE html>
-    <html lang="pl">
-    <head>
-        <meta charset="UTF-8">
-        <title>Blog dla programistów</title>
-    </head>
-<body>
-    <div>
-        <h1>Witam na stronie bloga!</h1>
-        <h2>To jest blog dla programistów</h2>
-        <h3>Autor: Sławomir Śpiewak</h3>
-        <h4>Wszelkie prawa zastrzeżone</h4>
-    </div>
-
-    {% comment "Komentarz autora" %}
-    Tutaj lista postów
-    {% endcomment %}
-
+{% extends 'blog/base.html' %}
+{% block content %}
     {% for post in posts %}
-    <div>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>Opublikowany: {{ post.publishDate }}</p>
-        <em>{{ post.text|linebreaksbr }}</em>
-    </div>
+        <div class ="post">
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                <div class="data">
+                    <p>Opublikowany: {{ post.publishDate }}</p>
+                </div>
+            <em>{{ post.text|linebreaksbr }}</em>
+            <p></p>
+        </div>
     {% endfor %}
-    <div>
-
-    </div>
-</body>
-</html>
+{% endblock %}
